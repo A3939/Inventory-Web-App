@@ -28,10 +28,10 @@ const Dashboard = () => {
         navigate(`/${route}`)
     }
 
-    useEffect(()=>{
-        const isAuthenticated = localStorage.getItem('isAuthenticated')
-        if(isAuthenticated === null) navigate('/login')
-    },[])
+    // useEffect(()=>{
+    //     const isAuthenticated = localStorage.getItem('isAuthenticated')
+    //     if(isAuthenticated === null) navigate('/login')
+    // },[])
 
   return (
     <div>
@@ -40,9 +40,15 @@ const Dashboard = () => {
     <div className='flex flex-wrap gap-5 justify-center items-center'>
         {cards.map((card) => {
             return(
-                <div className='bg-green-400 w-[150px] cursor-pointer text-black text-xl text-center font-bold p-3 rounded-lg border border-green-600 hover:shadow-lg transition-all duration-200 ease-out' onClick={() => handleNavigate(card.link)}>
-                    <p>{card.name}</p>
+                <>
+                <div className=' w-[150px] cursor-pointer text-black text-xl text-center font-bold p-3 rounded-lg overflow-hidden border border-green-600
+                 transform transition-transform hover:shadow-xl hover:scale-105 card-bg-animation' onClick={() => handleNavigate(card.link)}>
+                     <div className="bg-animation"></div>
+                     <div>
+                    <p className='z-[99] relative'>{card.name}</p>
+                     </div>
                 </div>
+                </>
             )
         })}
     </div>

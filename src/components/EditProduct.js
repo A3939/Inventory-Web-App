@@ -22,10 +22,10 @@ const EditProduct = () => {
     let TotalWeight = 0;
 
 
-    useEffect(() => {
-        const isAuthenticated = localStorage.getItem('isAuthenticated')
-        if (isAuthenticated === null) navigate('/login')
-    }, [])
+    // useEffect(() => {
+    //     const isAuthenticated = localStorage.getItem('isAuthenticated')
+    //     if (isAuthenticated === null) navigate('/login')
+    // }, [])
 
     function isEqual(arr1, arr2) {
         return JSON.stringify(arr1) === JSON.stringify(arr2);
@@ -68,17 +68,16 @@ const EditProduct = () => {
 
     const initialValues = {
         qty: editProduct[0].qty ? editProduct[0].qty.length > 0 ? editProduct[0].qty : [0] : [0],
-        currWeight: editProduct[0].weight.currWeight ? editProduct[0].weight.currWeight.length > 0 ? editProduct[0].weight.currWeight : [] : [],
-        totalWeight: editProduct[0].weight.totalWeight ? editProduct[0].weight.totalWeight.length > 0 ? editProduct[0].weight.totalWeight : [] : [],
+        currWeight: editProduct[0].weight.currWeight ? editProduct[0].weight.currWeight.length > 0 ? editProduct[0].weight.currWeight : [0] : [0],
+        totalWeight: editProduct[0].weight.totalWeight ? editProduct[0].weight.totalWeight.length > 0 ? editProduct[0].weight.totalWeight : [1] : [1],
     }
 
     const validation = Yup.object().shape({
         // qty: Yup.array().min(1, 'Add at least one quantity'),
         // currWeight: Yup.array().min(1, 'Add at least one weight'),
-        // totalWeight: Yup.array().of(Yup.number()
-        //     .min(1, 'Please enter correct total weight')
-        //     .required('Total weight is required')
-        // ).min(1, 'Add at least one total weight')
+        totalWeight: Yup.array().of(Yup.number()
+            .min(1, 'Please enter correct total weight')
+        )
     });
 
     return (

@@ -12,15 +12,13 @@ const ViewInvetory = () => {
     const [searchData, setSearchData] = useState([])
     const [searchTerm, setSearchTerm] = useState('');
 
-    useEffect(()=>{
-        const isAuthenticated = localStorage.getItem('isAuthenticated')
-        if(isAuthenticated === null) navigate('/login')
-    },[])
+    // useEffect(()=>{
+    //     const isAuthenticated = localStorage.getItem('isAuthenticated')
+    //     if(isAuthenticated === null) navigate('/login')
+    // },[])
 
     const exportToPDF = () => {
         const doc = new jsPDF();    
-        let y = 10; // Vertical position on the PDF
-
         doc.text(
             105,
             10,
@@ -30,13 +28,13 @@ const ViewInvetory = () => {
             "center"
           );
           const generalInfocolumns = [
-            "Name", "Quantity"
+            "SAP Code", "Name", "Quantity"
           ];
           var generalInfoRows = []
         Object.keys(prodData).forEach((key, index) => {
             const product = prodData[key];
             const qtyDisplay = Array.isArray(product.TotalQty) ? product.qty.join(', ') : product.TotalQty;
-            generalInfoRows[index] = [`${product.name}`,`${qtyDisplay}`];
+            generalInfoRows[index] = [`${product.SAPCode}` ,`${product.name}`,`${qtyDisplay}`];
         });
         doc.autoTable(generalInfocolumns, generalInfoRows, {
             startY: 25
@@ -79,8 +77,8 @@ const ViewInvetory = () => {
                                     <div className='flex justify-between rounded-md w-full px-3 py-2 border-green-500 bg-green-100 hover:bg-[#D0F1BF] hover:shadow-md tramsition-all ease-in-out duration-300'
                                         onClick={() => { navigate(`/editProduct?${product.id}`) }}>
                                         <div className='flex gap-3 text-md font-bold'>
-                                            <p>{index + 1}.</p>
-                                            <p>{product.name}</p>
+                                            <p>{product.SAPCode}.</p>
+                                            <p className=' truncate max-w-40' title={product.name}>{product.name}</p>
                                         </div>
                                         <div className='flex gap-5'>
                                             <p className=' truncate max-w-24' >Qty: <span className='font-semibold' title={product.TotalQty}>{product.TotalQty}</span></p>

@@ -1,18 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   margin: 0;
-  font-family: 'Lato',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.bg-animation {
+  /* Other properties */
+  transition: @apply transform 0.5s ease, background-color 0.3s ease; /* Include all properties you're animating */
+}
+
+.card-bg-animation .bg-animation {
+  height: 54px;
+  width: 54px;
+  background-color: #d0f1bf7a;
+  z-index: 1;
+  position: absolute;
+  top: -50px;
+  right: -60px;
+  border-radius: 50%;
+  transition: transform 0.5s ease, background-color 0.3s ease; /* Include all properties you're animating */
+  transform-origin: top right;
+  transform: scale(1); /* Start with the normal size */
+}
+
+.card-bg-animation:hover .bg-animation,
+.card-bg-animation:focus .bg-animation {
+  background-color: #d0f1bf7a; /* Background color on hover */
+  transform: scale(14); /* Scale up on hover */
+}
+
+.card-bg-animation .content {
+  position: relative;
+  z-index: 2; /* Ensure content is above the background animation */
 }
