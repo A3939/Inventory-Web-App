@@ -72,6 +72,7 @@ const ViewInvetory = () => {
                     </div>
                     {searchData?.length > 0 ?
                         <>
+                            <div className='max-h-[500px] w-full overflow-y-scroll flex flex-col gap-3'>
                             {searchData?.map((product, index) => {
                                 return (
                                     <div className='flex justify-between rounded-md w-full px-3 py-2 border-green-500 bg-green-100 hover:bg-[#D0F1BF] hover:shadow-md tramsition-all ease-in-out duration-300'
@@ -87,6 +88,7 @@ const ViewInvetory = () => {
                                     </div>
                                 )
                             })}
+                            </div>
                             <div>
                                 <button className='bg-[#D0F1BF] px-2 py-1 rounded-md hover:shadow-lg  mt-5 border border-green-900 transition-all ease-in-out duration-300' onClick={() => { exportToPDF() }}>Print</button>
                             </div>
