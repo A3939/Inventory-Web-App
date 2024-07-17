@@ -45,3 +45,7 @@ code {
   position: relative;
   z-index: 2; /* Ensure content is above the background animation */
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

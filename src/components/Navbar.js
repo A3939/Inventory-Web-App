@@ -23,7 +23,7 @@ const Navbar = () => {
         navigate('/login')
     }
     return (
-        <div className='flex justify-between px-4 py-3 items-center mb-6 sticky top-0 '>
+        <div className='flex justify-between px-4 py-3 items-center mb-6 sticky top-0 bg-white z-[40]'>
             <div className='flex items-center gap-2 cursor-pointer'>
                 <img src={logo} width={'55px'} height={'55px'} onClick={() => handleNavigate('')} />
                 <button className='bg-[#006241] cursor-pointer px-3 py-2 rounded-md focus:outline-none text-white md:hidden inline-block' onClick={() => { toggleNav() }}><GrMenu></GrMenu></button>
