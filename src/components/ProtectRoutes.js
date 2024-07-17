@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Navigate } from 'react-router-dom'
 
 const ProtectRoutes = ({children}) => {
     const navigate = useNavigate()
@@ -7,7 +7,7 @@ const ProtectRoutes = ({children}) => {
 
   return (
     <>
-        {isLogin ? {children}: navigate('login')}
+        {isLogin ? children: <Navigate to="/login" />}
     </>
   )
 }

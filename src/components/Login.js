@@ -68,8 +68,8 @@ const Login = () => {
 
     return (
         <div className='flex justify-center items-center top-32 bg-green-50 h-screen'>
-            <div className='max-w-[500px] w-full max-h-[500px] h-full bg-white rounded-lg shadow-lg border border-green-200 flex items-center justify-center'>
-                <div className='h-[400px] w-[300px]'>
+            <div className='max-w-[500px] w-full max-h-[400px] h-full bg-white rounded-lg shadow-lg border border-green-200 flex items-center justify-center items-center'>
+                <div className='h-[300px] flex items-center justify-center'>
                     <Formik
                         initialValues={{
                             email: '',
@@ -79,18 +79,18 @@ const Login = () => {
                         onSubmit={handleSubmit}
                     >
                         {(formik) => (
-                            <Form onSubmit={formik.handleSubmit} className='flex gap-5 flex-col'>
+                            <Form onSubmit={formik.handleSubmit} className='flex gap-5 flex-col w-[300px] '>
                                 <div className='flex flex-col items-start gap-2'>
-                                    <label htmlFor='email'>Email</label>
+                                    <label htmlFor='email' className='font-semibold'>Email</label>
                                     <>
-                                    <Field type='email' name='email' placeholder='Enter email' className='w-full px-3 py-2 rounded-md focus:outline-none border'/>
+                                    <Field type='email' name='email' placeholder='Enter email' className='w-full px-3 py-2 rounded-md focus:outline-none border '/>
                                     <ErrorMessage name='email'>
                                         {(msg) => <div className='text-red-400'>{msg}</div>}
                                     </ErrorMessage>
                                     </>
                                 </div>
                                 <div className='flex flex-col items-start gap-2'>
-                                    <label htmlFor='password'>Password</label>
+                                    <label htmlFor='password' className='font-semibold'>Password</label>
                                     <>
                                     <div className='w-full rounded-md border flex'>
                                     <Field type={`${passVisible ? 'text' : 'password'}`}  name='password' placeholder='Enter password' className='w-full px-3 py-2 focus:outline-none border-r'/>
@@ -102,7 +102,7 @@ const Login = () => {
                                     </>
                                 </div>
                                 <div>
-                                    <button type='submit' className='bg-green-300 rounded-md border border-green-200 shadow hover:bg-green-200 px-3 py-2'>Login</button>
+                                    <button type='submit' className='bg-green-300 w-full font-bold rounded-md border border-green-200 shadow hover:bg-green-200 px-3 py-2'>Login</button>
                                 </div>
                             </Form>
                         
